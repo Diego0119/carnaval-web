@@ -1,0 +1,66 @@
+---
+const response = await fetch(
+    "http://localhost/project-puq/wp-json/wp/v2/posts",
+);
+const posts = await response.json();
+---
+
+<div class="vote-container">
+    <h1>Vota por tu opción favorita</h1>
+    <div class="options">
+        {
+            posts.map((post:{
+                    title: { rendered: string };
+                    excerpt: { rendered: string };
+            }) => (
+                <div class="vote-card">
+                    <h3>{post.title.rendered}</h3>
+                    <p>{post.excerpt.rendered}</p>
+                        <button>Votar</button>
+                    </a>
+                </div>
+            ))
+        }
+    </div>
+</div>
+
+<style>
+    .vote-container {
+        text-align: center;
+        padding: 2rem;
+        background-color: #f4f4f4;
+        border-radius: 8px;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .options {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .vote-card {
+        padding: 1rem;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+        background: white;
+        text-align: center;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    button {
+        margin-top: 10px;
+        padding: 8px 12px;
+        cursor: pointer;
+        background: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        transition: background 0.3s;
+    }
+
+    button:hover {
+        background: #0056b3;
+    }
+</style>
