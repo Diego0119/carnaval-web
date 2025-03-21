@@ -8,16 +8,15 @@ const posts = await response.json();
 ---
 
 <div class="text-center bg-white radius-8 mx-auto">
-    <h1>Vota por tu opción favorita</h1>
     <div class="flex flex-col gap-y-4">
         {
             posts.map((post:{
                     title: { rendered: string };
                     excerpt: { rendered: string };
             }) => (
-                <div class="bg-white text-center shadow-xl border-1 b-white b-radius mx-auto p-4 rounded-md">
+                <div class="bg-white text-center shadow-xl b-2 mx-auto p-4 rounded-md">
                     <h3 class="text-xl font-bold">{post.title.rendered}</h3>
-                    <p>{post.excerpt.rendered}</p>
+                    <p set:html={post.excerpt.rendered}/>
                         <button class="text-white mt-10 px-4 py-2 cursor-pointer bg-blue-600 rounded-md hover:bg-blue-700">Votar</button>
                     </a>
                 </div>
