@@ -8,69 +8,75 @@ const posts = await response.json();
 ---
 
 <div class="relative">
-    <div class="bg-indigo-400 pb-10 pt-20 lg:pt-[120px] relative">
+    <div class="relative">
         <svg
-            class="absolute top-0 left-0 w-full -mt-1"
-            viewBox="0 0 1200 100"
-            preserveAspectRatio="none"
+            class="absolute w-full"
+            viewBox="0 0 1440 320"
+            fill="#4f46e5"
+            xmlns="http://www.w3.org/2000/svg"
         >
             <path
-                d="M0,50 Q50,0 100,50 T200,50 T300,50 T400,50 T500,50 T600,50 T700,50 T800,50 T900,50 T1000,50 T1100,50 T1200,50 L1200,100 L0,100 Z"
-                fill="#F3F4F6"></path>
+                fill-opacity="1"
+                d="M0,128L40,138.7C80,149,160,171,240,154.7C320,139,400,85,480,90.7C560,96,640,160,720,192C800,224,880,224,960,208C1040,192,1120,160,1200,144C1280,128,1360,128,1400,128L1440,128L1440,0L1400,0C1360,0,1280,0,1200,0C1120,0,1040,0,960,0C880,0,800,0,720,0C640,0,560,0,480,0C400,0,320,0,240,0C160,0,80,0,40,0L0,0Z"
+            ></path>
         </svg>
+    </div>
+    <div class="pb-10 pt-20 lg:pt-[120px] relative">
+        <path
+            d="M0,50 Q50,0 100,50 T200,50 T300,50 T400,50 T500,50 T600,50 T700,50 T800,50 T900,50 T1000,50 T1100,50 T1200,50 L1200,100 L0,100 Z"
+            fill="#F3F4F6"></path>
+    </div>
 
-        <div class="mx-auto max-w-7xl px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-                {
-                    posts.map(
-                        (post: {
-                            title: { rendered: string };
-                            excerpt: { rendered: string };
-                            date: string;
-                        }) => (
-                            <div class="hover:scale-105 transform transition-all duration-300">
-                                <div class="bg-white rounded-lg overflow-hidden shadow-lg">
-                                    <img
-                                        src="https://cdn.tailgrids.com/1.0/assets/images/cards/card-01/image-01.jpg"
-                                        alt="image"
-                                        class="w-full h-56 object-cover"
-                                    />
-                                    <div class="p-6 text-center">
-                                        <p class="text-sm text-gray-400 mb-2">
-                                            {new Date(
-                                                post.date,
-                                            ).toLocaleDateString("es-ES", {
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+            {
+                posts.map(
+                    (post: {
+                        title: { rendered: string };
+                        excerpt: { rendered: string };
+                        date: string;
+                    }) => (
+                        <div class="hover:scale-105 transform transition-all duration-300">
+                            <div class="bg-white rounded-lg overflow-hidden shadow-lg">
+                                <img
+                                    src="https://cdn.tailgrids.com/1.0/assets/images/cards/card-01/image-01.jpg"
+                                    alt="image"
+                                    class="w-full h-56 object-cover"
+                                />
+                                <div class="p-6 text-center">
+                                    <p class="text-sm text-gray-400 mb-2">
+                                        {new Date(post.date).toLocaleDateString(
+                                            "es-ES",
+                                            {
                                                 day: "numeric",
                                                 month: "long",
                                                 year: "numeric",
-                                            })}
-                                        </p>
-                                        <h3 class="font-semibold text-gray-900 text-xl mb-3">
-                                            <a
-                                                href="javascript:void(0)"
-                                                class="hover:text-blue-600 transition"
-                                            >
-                                                {post.title.rendered}
-                                            </a>
-                                        </h3>
-                                        <p class="text-base text-gray-600 leading-relaxed mb-5">
-                                            {post.excerpt.rendered}
-                                        </p>
+                                            },
+                                        )}
+                                    </p>
+                                    <h3 class="font-semibold text-gray-900 text-xl mb-3">
                                         <a
                                             href="javascript:void(0)"
-                                            class="inline-block py-2 px-6 border border-gray-300 rounded-full text-gray-700 font-medium hover:border-blue-600 hover:bg-blue-600 hover:text-white transition"
+                                            class="hover:text-blue-600 transition"
                                         >
-                                            Votar
+                                            {post.title.rendered}
                                         </a>
-                                    </div>
+                                    </h3>
+                                    <p class="text-base text-gray-600 leading-relaxed mb-5">
+                                        {post.excerpt.rendered}
+                                    </p>
+                                    <a
+                                        href="javascript:void(0)"
+                                        class="inline-block py-2 px-6 border border-gray-300 rounded-full text-gray-700 font-medium hover:border-blue-600 hover:bg-blue-600 hover:text-white transition"
+                                    >
+                                        Votar
+                                    </a>
                                 </div>
                             </div>
-                        ),
-                    )
-                }
-            </div>
+                        </div>
+                    ),
+                )
+            }
         </div>
     </div>
-
-    <div class="bg-black pt-20 pb-10"></div>
 </div>

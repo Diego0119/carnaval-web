@@ -2,51 +2,91 @@
 import "../styles/global.css";
 ---
 
-<div class="text-center p-8 bg-gray-100 mx-auto rounded-xl mt-16 shadow-md">
-    <h4
-        class="font-extrabold text-3xl text-gray-800 mb-6 uppercase tracking-wide"
+<div class="relative">
+    <div
+        class="text-center p-8 bg-gray-100 mx-auto rounded-xl mt-16 shadow-md relative"
     >
-        Disfruta de los descuentos una vez hayas votado 🎉
-    </h4>
+        <h4 class="font-extrabold text-3xl text-gray-800 mb-6 tracking-wide">
+            Disfruta de los descuentos una vez hayas votado
+        </h4>
 
-    <div class="flex flex-col gap-6 max-w-lg mx-auto">
-        <div
-            class="p-6 rounded-lg bg-white shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300"
-        >
-            <p class="text-lg font-semibold text-gray-700 mb-4">
-                🍫 10% de descuento en la chocolatería
-            </p>
-            <button
-                class="cursor-pointer mt-4 bg-blue-500 text-white rounded-md px-6 py-3 transition-all hover:bg-blue-600 hover:scale-105"
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            <div
+                class="p-6 rounded-lg bg-white shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 flex flex-col items-center text-center"
             >
-                Canjear
-            </button>
-        </div>
+                <img
+                    src="/images/chocolate.jpg"
+                    alt="Chocolatería"
+                    class="w-24 h-24 object-cover rounded-full mb-4"
+                />
+                <p class="text-sm text-gray-500">Válido hasta: 30 de Abril</p>
+                <p class="text-lg font-semibold text-gray-700 mb-2">
+                    🍫 10% de descuento en la chocolatería
+                </p>
+                <p class="text-gray-600 text-sm mb-4">
+                    Disfruta de los mejores chocolates artesanales con este
+                    descuento especial.
+                </p>
+                <button
+                    class="cursor-pointer mt-auto bg-blue-500 text-white rounded-md px-6 py-3 transition-all hover:bg-blue-600 hover:scale-105"
+                    >Canjear</button
+                >
+            </div>
 
-        <div
-            class="p-6 rounded-lg bg-white shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300"
-        >
-            <p class="text-lg font-semibold text-gray-700 mb-4">
-                ✂️ 10% de descuento en la barbería "Blessed Studio"
-            </p>
-            <button
-                class="cursor-pointer mt-4 bg-blue-500 text-white rounded-md px-6 py-3 transition-all hover:bg-blue-600 hover:scale-105"
+            <div
+                class="p-6 rounded-lg bg-white shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 flex flex-col items-center text-center"
             >
-                Canjear
-            </button>
-        </div>
+                <img
+                    src="/images/barber.jpg"
+                    alt="Blessed Studio"
+                    class="w-24 h-24 object-cover rounded-full mb-4"
+                />
+                <p class="text-sm text-gray-500">Válido hasta: 15 de Mayo</p>
+                <p class="text-lg font-semibold text-gray-700 mb-2">
+                    ✂️ 10% de descuento en la barbería "Blessed Studio"
+                </p>
+                <p class="text-gray-600 text-sm mb-4">
+                    Luce impecable con un corte profesional y un descuento
+                    exclusivo.
+                </p>
+                <button
+                    class="cursor-pointer mt-auto bg-blue-500 text-white rounded-md px-6 py-3 transition-all hover:bg-blue-600 hover:scale-105"
+                    >Canjear</button
+                >
+            </div>
 
-        <div
-            class="p-6 rounded-lg bg-white shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300"
-        >
-            <p class="text-lg font-semibold text-gray-700 mb-4">
-                🌿 10% de descuento en "Plantas Doña Carmen"
-            </p>
-            <button
-                class="cursor-pointer mt-4 bg-blue-500 text-white rounded-md px-6 py-3 transition-all hover:bg-blue-600 hover:scale-105"
+            <div
+                class="p-6 rounded-lg bg-white shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 flex flex-col items-center text-center"
             >
-                Canjear
-            </button>
+                <img
+                    src="/images/plants.jpg"
+                    alt="Plantas Doña Carmen"
+                    class="w-24 h-24 object-cover rounded-full mb-4"
+                />
+                <p class="text-sm text-gray-500">Válido hasta: 20 de Mayo</p>
+                <p class="text-lg font-semibold text-gray-700 mb-2">
+                    🌿 10% de descuento en "Plantas Doña Carmen"
+                </p>
+                <p class="text-gray-600 text-sm mb-4">
+                    Dale vida a tu hogar con hermosas plantas y un precio
+                    especial.
+                </p>
+                <button
+                    class="cursor-pointer mt-auto bg-blue-500 text-white rounded-md px-6 py-3 transition-all hover:bg-blue-600 hover:scale-105"
+                    >Canjear</button
+                >
+            </div>
         </div>
     </div>
+    <svg
+        class="w-full -z-10"
+        viewBox="0 0 1440 320"
+        fill="#4f46e5"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        <path
+            fill-opacity="1"
+            d="M0,128L40,138.7C80,149,160,171,240,154.7C320,139,400,85,480,90.7C560,96,640,160,720,192C800,224,880,224,960,208C1040,192,1120,160,1200,144C1280,128,1360,128,1400,128L1440,128L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z"
+        ></path>
+    </svg>
 </div>
