@@ -2,10 +2,43 @@
 import "../styles/global.css";
 ---
 
-<footer class="bg-black">
-    <div class="text-white shadow-xl p-12 gap-y-2 text-center justify-center">
-        <p>Desarrollado y diseñado por Diego Sanhueza</p>
-        <p>diegosanhuezaaguilar@gmail.com</p>
-        <p>Copyright 2025 ©</p>
+<footer class="bg-black text-white py-8 px-6">
+    <div
+        class="max-w-7xl mx-auto flex flex-col md:flex-row items-start justify-between gap-8"
+    >
+        <div class="flex items-start gap-4">
+            <img
+                src="https://www.puntaarenas.cl/img/Logo.640046c2.png"
+                alt="Logo Punta Arenas"
+                class="h-14 w-auto"
+            />
+            <div class="hidden sm:block">
+                <h4 class="text-lg font-semibold">
+                    Municipalidad de Punta Arenas
+                </h4>
+                <p class="text-sm">Comprometidos con nuestra comunidad</p>
+            </div>
+        </div>
+
+        <div class="text-sm space-y-1">
+            <h5 class="font-semibold">DIRECCIÓN</h5>
+            <p>Plaza Muñoz Gamero 745, Punta Arenas, Chile</p>
+
+            <h5 class="mt-3 font-semibold">MESA CENTRAL</h5>
+            <p>(61) 2 200500</p>
+        </div>
+
+        <div class="text-sm md:text-right space-y-1">
+            <p>Desarrollado y diseñado por Diego Sanhueza</p>
+            <p>
+                <a
+                    href="mailto:diegosanhuezaaguilar@gmail.com"
+                    class="hover:underline"
+                >
+                    diegosanhuezaaguilar@gmail.com
+                </a>
+            </p>
+            <p>&copy; 2025 Todos los derechos reservados</p>
+        </div>
     </div>
 </footer>
