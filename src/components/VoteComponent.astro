@@ -1,10 +1,32 @@
 ---
+const query = `
+    query GetPostByCategory{
+        posts(where:{categoryName:"murga"}){
+    
+    nodes{
+        title
+        slug
+        date
+        excerpt
+        featuredImage{
+        node{
+            sourceUrl
+        }
+    }
+    }
+    }  
+}
+`;
+
 import "../styles/global.css";
 
-const response = await fetch(
-    "http://localhost/project-puq/wp-json/wp/v2/posts?_embed",
-);
-const posts = await response.json();
+const response = await fetch("http://localhost/project-puq/graphql", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ query }),
+});
+const { data } = await response.json();
+const posts = data.posts.nodes;
 ---
 
 <div class="relative">
@@ -27,40 +49,28 @@ const posts = await response.json();
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
             {
-                posts.map((post) => (
+                posts.map((post: any) => (
                     <div class="hover:scale-105 transform transition-all duration-300">
                         <div class="bg-white rounded-lg overflow-hidden shadow-lg">
                             <img
-                                src={
-                                    post._embedded?.["wp:featuredmedia"]?.[0]
-                                        ?.source_url ||
-                                    "https://via.placeholder.com/400x225"
-                                }
+                                src={post.featuredImage.node.sourceUrl}
                                 alt={post.title.rendered}
                                 class="w-full h-56"
                             />
                             <div class="p-6 text-center">
-                                <p class="text-sm text-gray-400 mb-2">
-                                    {new Date(post.date).toLocaleDateString(
-                                        "es-ES",
-                                        {
-                                            day: "numeric",
-                                            month: "long",
-                                            year: "numeric",
-                                        },
-                                    )}
-                                </p>
+                                <p class="text-sm text-gray-400 mb-2">fecha</p>
                                 <h3 class="font-semibold text-gray-900 text-xl mb-3">
                                     <a
                                         href="javascript:void(0)"
                                         class="hover:text-blue-600 transition"
                                     >
-                                        {post.title.rendered}
+                                        {post.title}
                                     </a>
                                 </h3>
-                                <p class="text-base text-gray-600 leading-relaxed mb-5">
-                                    {post.excerpt.rendered}
-                                </p>
+                                <p
+                                    class="text-base text-gray-600 leading-relaxed mb-5"
+                                    set:html={post.excerpt}
+                                ></p>
                                 <a
                                     href="javascript:void(0)"
                                     class="inline-block py-2 px-6 border border-gray-300 rounded-full text-gray-700 font-medium hover:border-blue-600 hover:bg-blue-600 hover:text-white transition"

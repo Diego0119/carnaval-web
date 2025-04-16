@@ -1,5 +1,10 @@
 ---
 import "../styles/global.css";
+
+const descuentos = await fetch(
+    "http://localhost/project-puq/wp-json/wp/v2/posts",
+);
+const posts = await descuentos.json();
 ---
 
 <div class="relative">
