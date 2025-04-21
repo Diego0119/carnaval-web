@@ -2,21 +2,20 @@
 import "../styles/global.css";
 
 const query = `
-    query GetPostByCategory{
-        posts(where:{categoryName:"murga"}){
-    
-    nodes{
-        title
-        slug
-        date
-        excerpt
-        featuredImage{
-        node{
-            sourceUrl
+query GetPostByCategory{
+    posts(where:{categoryName:"murga"}){
+        nodes{
+            title
+            slug
+            date
+            excerpt
+            featuredImage{
+                node{
+                    sourceUrl
+                }
+            }
         }
     }
-    }
-    }  
 }
 `;
 
@@ -73,11 +72,18 @@ const posts = data.posts.nodes;
                                     class="text-base text-gray-600 leading-relaxed mb-5"
                                     set:html={post.excerpt}
                                 />
+                                <div class="flex flex-col sm:flex-row" />
                                 <a
                                     href="javascript:void(0)"
-                                    class="inline-block py-2 mt-2 px-6 border border-gray-300 rounded-full text-gray-700 font-medium hover:border-blue-600 hover:bg-blue-600 hover:text-white transition"
+                                    class="inline-block py-2 mt-2 px-6 border border-gray-300 rounded-full text-gray-700 font-medium hover:border-blue-600 hover:bg-indigo-600 hover:text-white transition"
                                 >
                                     Votar
+                                </a>
+                                <a
+                                    href="javascript:void(0)"
+                                    class="inline-block py-2 mt-2 px-6 border border-gray-300 rounded-full text-gray-700 font-medium hover:border-blue-600 hover:bg-indigo-600 hover:text-white transition"
+                                >
+                                    Ver más
                                 </a>
                             </div>
                         </div>
