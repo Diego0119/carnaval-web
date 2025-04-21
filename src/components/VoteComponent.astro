@@ -1,4 +1,6 @@
 ---
+import "../styles/global.css";
+
 const query = `
     query GetPostByCategory{
         posts(where:{categoryName:"murga"}){
@@ -17,8 +19,6 @@ const query = `
     }  
 }
 `;
-
-import "../styles/global.css";
 
 const response = await fetch("http://localhost/project-puq/graphql", {
     method: "POST",
@@ -70,10 +70,10 @@ const posts = data.posts.nodes;
                                 <p
                                     class="text-base text-gray-600 leading-relaxed mb-5"
                                     set:html={post.excerpt}
-                                ></p>
+                                />
                                 <a
                                     href="javascript:void(0)"
-                                    class="inline-block py-2 px-6 border border-gray-300 rounded-full text-gray-700 font-medium hover:border-blue-600 hover:bg-blue-600 hover:text-white transition"
+                                    class="inline-block py-2 mt-2 px-6 border border-gray-300 rounded-full text-gray-700 font-medium hover:border-blue-600 hover:bg-blue-600 hover:text-white transition"
                                 >
                                     Votar
                                 </a>
