@@ -1,49 +1,104 @@
-# Astro Starter Kit: Basics
-<!-- Hacer documentación -->
+# Carnaval de Invierno 2025 - Sitio Web
 
-```sh
-npm create astro@latest -- --template basics
+Este proyecto es un sitio web desarrollado con **Astro** como framework principal y **WordPress en modo Headless** como fuente de datos. El sitio promociona el "Carnaval de Invierno 2025" de Punta Arenas, incluyendo votaciones, descuentos y contenido multimedia.
+
+---
+
+## 🛠️ Tecnologías Utilizadas
+
+- **Astro**: Framework estático moderno para el frontend.
+- **WordPress Headless**: Usado como CMS para gestionar entradas y contenido, accedido mediante GraphQL.
+- **GraphQL**: Consultas a WordPress desde el frontend Astro.
+- **Tailwind CSS**: Para estilos rápidos y responsivos.
+- **JavaScript**: Para animaciones y comportamiento dinámico.
+
+---
+
+## 📁 Estructura de Componentes
+
+El sitio se compone de varios componentes:
+
+| Componente              | Descripción |
+|------------------------|-------------|
+| `HeroComponent.astro`  | Hero section con imagen de fondo y botones de navegación. |
+| `VoteComponent.astro`  | Renderiza tarjetas de carros obtenidos desde WordPress con opción de "Votar" y "Ver más". |
+| `DiscountComponent.astro` | Sección donde los usuarios pueden acceder a descuentos. |
+| `VideoComponent.astro` | Muestra el video destacado extraído desde WordPress por categoría "Video". |
+| `FooterComponent.astro` | Footer con logo institucional y textos. |
+
+---
+
+## 🌐 WordPress GraphQL Queries
+
+### Obtener Carros (Categoría: `murga`)
+```
+query GetPostByCategory {
+  posts(where: {categoryName: "murga"}) {
+    nodes {
+      title
+      slug
+      date
+      excerpt
+      featuredImage {
+        node {
+          sourceUrl
+        }
+      }
+    }
+  }
+}
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
+### Obtener Video Principal (Categoría: Video)
+```
+query GetVideo {
+  posts(where: {categoryName: "Video"}) {
+    nodes {
+      title
+      slug
+      excerpt
+      date
+    }
+  }
+}
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+### 🖼️ Imágenes y Estilos
 
-## 🧞 Commands
+Imagen destacada: puq.jpeg utilizada en la sección HeroComponent.
+Estilos personalizados: Se cargan desde global.css.
 
-All commands are run from the root of the project, from a terminal:
+### 🚀 Navegación
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+El sitio cuenta con navegación interna suave entre secciones utilizando JavaScript:
+```
+document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+  anchor.addEventListener("click", function (e) {
+    e.preventDefault();
+    const targetId = this.getAttribute("href").substring(1);
+    const targetElement = document.getElementById(targetId);
+    if (targetElement) {
+      window.scrollTo({
+        top: targetElement.offsetTop - 80,
+        behavior: "smooth",
+      });
+    }
+  });
+});
+```
 
-## 👀 Want to learn more?
+### 🧪 Ejecución local
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Instala dependencias:
+```
+npm install
+```
+Levanta Astro en modo desarrollo:
+```
+npm run dev
+```
+Asegúrate de tener el backend de WordPress activo y accesible en:
+```
+http://localhost/project-puq/graphql
+```
+
