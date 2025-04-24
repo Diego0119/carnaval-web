@@ -47,6 +47,26 @@ const posts = data.posts.nodes;
 
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+            <div
+                id="notificacion"
+                class="hidden fixed inset-0 flex items-center justify-center bg-black/50 z-50"
+            >
+                <div
+                    class="relative bg-green-500 text-white px-6 py-4 rounded-lg shadow-xl w-auto max-w-sm text-center"
+                >
+                    <button
+                        id="cerrarNotificacion"
+                        class="absolute top-2 right-2 text-white text-lg font-bold focus:outline-none hover:text-gray-200"
+                        aria-label="Cerrar"
+                    >
+                        ×
+                    </button>
+                    <p>
+                        ¡Gracias por votar, tu código de descuento es #ADFB123
+                    </p>
+                </div>
+            </div>
+
             {
                 posts.map((post: any) => (
                     <div class="hover:scale-105 transform transition-all duration-300">
@@ -75,15 +95,9 @@ const posts = data.posts.nodes;
                                 <div class="flex flex-col sm:flex-row" />
                                 <a
                                     href="javascript:void(0)"
-                                    class="inline-block py-2 mt-2 px-6 border border-gray-300 rounded-full text-gray-700 font-medium hover:border-blue-600 hover:bg-indigo-600 hover:text-white transition"
+                                    class="votar-btn inline-block py-2 mt-2 px-6 border border-gray-300 rounded-full text-gray-700 font-medium hover:border-blue-600 hover:bg-indigo-600 hover:text-white transition"
                                 >
                                     Votar
-                                </a>
-                                <a
-                                    href="javascript:void(0)"
-                                    class="inline-block py-2 mt-2 px-6 border border-gray-300 rounded-full text-gray-700 font-medium hover:border-blue-600 hover:bg-indigo-600 hover:text-white transition"
-                                >
-                                    Ver más
                                 </a>
                             </div>
                         </div>
@@ -93,3 +107,19 @@ const posts = data.posts.nodes;
         </div>
     </div>
 </div>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const notificacion = document.getElementById("notificacion");
+        const cerrarBtn = document.getElementById("cerrarNotificacion");
+
+        document.querySelectorAll(".votar-btn").forEach((btn) => {
+            btn.addEventListener("click", () => {
+                notificacion.classList.remove("hidden");
+            });
+        });
+
+        cerrarBtn.addEventListener("click", () => {
+            notificacion.classList.add("hidden");
+        });
+    });
+</script>
