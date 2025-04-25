@@ -102,3 +102,15 @@ Asegúrate de tener el backend de WordPress activo y accesible en:
 http://localhost/project-puq/graphql
 ```
 
+### Datos de la base de datos
+
+
+// ** Database settings - You can get this info from your web host ** //
+/** The name of the database for WordPress */
+define('DB_NAME', 'carnival');
+
+/** Database username */
+define('DB_USER', 'user_carnival');
+
+/** Database password */
+define('DB_PASSWORD', '20user_carnival25');
